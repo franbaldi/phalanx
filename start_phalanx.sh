@@ -99,7 +99,7 @@ uvicorn main:app --reload --port 8005 &
 cd ../..
 
 # --- Database Provisioning Service ---
-echo "--- Setting up Database Provisioning Service ---"
+echo "--- Setting up Database Provisioning Service ---
 kill_process_on_port 8003
 cd services/database-provisioning-service
 echo "Building and running database provisioning service container..."
@@ -108,9 +108,18 @@ docker rm -f database-provisioning-service || true
 docker run -d --name database-provisioning-service -p 8003:8003 -v /var/run/docker.sock:/var/run/docker.sock database-provisioning-service
 cd ../..
 
+# --- MongoDB Service ---
+echo "--- Setting up MongoDB Service ---"
+kill_process_on_port 27017
+docker rm -f phalanx-mongodb || true
+docker run -d --name phalanx-mongodb -p 27017:27017 mongo:latest
+
 echo "--- All services are starting up ---"
 
-# --- Run DORA Incident Simulator ---
+# Wait for MongoDB to be ready
+wait_for_service "http://localhost:27017"
+
+# Wait for all services to be ready
 wait_for_service "http://localhost:8000/docs"
 wait_for_service "http://localhost:8001/docs"
 wait_for_service "http://localhost:8002/docs"
