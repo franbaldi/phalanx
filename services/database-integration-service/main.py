@@ -1,8 +1,9 @@
-from fastapi import FastAPI, BackgroundTasks
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
+from pymongo import MongoClient
+from typing import Optional, Dict, Any
 import httpx
 import asyncio
-import datetime
 
 app = FastAPI()
 
@@ -10,48 +11,61 @@ class DBConnection(BaseModel):
     db_type: str
     host: str
     port: int
-    user: str
-    password: str
+    user: Optional[str] = None
+    password: Optional[str] = None
     dbname: str
-
-async def forward_query(query: str):
-    async with httpx.AsyncClient() as client:
-        try:
-            response = await client.post("http://127.0.0.1:8000/predict", json={"query": query})
-            response.raise_for_status()  # Raise an exception for bad status codes
-            
-            prediction = response.json()
-            if prediction.get("is_anomaly"):
-                await client.post(
-                    "http://127.0.0.1:8002/report_anomaly",
-                    json={
-                        "query": query,
-                        "timestamp": datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
-                    },
-                )
-        except httpx.RequestError as exc:
-            print(f"An error occurred while requesting {exc.request.url!r}.")
-        except Exception as e:
-            print(f"An unexpected error occurred: {e}")
-
-
-async def simulate_queries(background_tasks: BackgroundTasks):
-    queries = [
-        "SELECT * FROM users WHERE id = 1",
-        "SELECT * FROM products WHERE category = 'electronics'",
-        "INSERT INTO orders (customer_id, product_id, quantity) VALUES (1, 2, 3)",
-        "DELETE FROM customers WHERE id = 1; DROP TABLE users;"
-    ]
-    for query in queries:
-        background_tasks.add_task(forward_query, query)
-        await asyncio.sleep(5)
+    collection_name: str
 
 @app.post("/connect")
-async def connect_to_db(db_connection: DBConnection, background_tasks: BackgroundTasks):
+async def connect_to_db(db_connection: DBConnection):
     """
-    Simulates connecting to a database and capturing queries.
+    Connects to a MongoDB database, fetches data from a specified collection,
+    and sends each document as an event to the anomaly detection service.
     """
-    # In a real implementation, this would establish a connection
-    # and start monitoring the database.
-    background_tasks.add_task(simulate_queries, background_tasks)
-    return {"message": f"Successfully connected to {db_connection.db_type} at {db_connection.host}"}
+    if db_connection.db_type != "mongodb":
+        raise HTTPException(status_code=400, detail="Only MongoDB is supported at the moment.")
+
+    try:
+        # Construct MongoDB connection string
+        if db_connection.user and db_connection.password:
+            mongo_uri = f"mongodb://{db_connection.user}:{db_connection.password}@{db_connection.host}:{db_connection.port}/"
+        else:
+            mongo_uri = f"mongodb://{db_connection.host}:{db_connection.port}/"
+
+        client = MongoClient(mongo_uri)
+        db = client[db_connection.dbname]
+        collection = db[db_connection.collection_name]
+
+        # Fetch data from the collection
+        documents = []
+        for doc in collection.find():
+            # MongoDB _id is not JSON serializable, so convert it to string
+            if '_id' in doc:
+                doc['_id'] = str(doc['_id'])
+            documents.append(doc)
+
+        if not documents:
+            return {"message": f"No documents found in collection {db_connection.collection_name}."}
+
+        # Send each document as an event to the anomaly detection service
+        async with httpx.AsyncClient() as http_client:
+            for doc in documents:
+                event_data = {
+                    "user_id": doc.get("user_id", "unknown"), # Assuming user_id is present
+                    "timestamp": doc.get("timestamp", ""), # Assuming timestamp is present
+                    "event_type": db_connection.collection_name, # Use collection name as event type
+                    "data": doc
+                }
+                try:
+                    response = await http_client.post("http://localhost:8000/check-event", json=event_data)
+                    response.raise_for_status()
+                    print(f"Sent event to anomaly detection: {event_data}")
+                except httpx.RequestError as exc:
+                    print(f"Error sending event to anomaly detection: {exc.request.url!r} - {exc}")
+                except Exception as e:
+                    print(f"Unexpected error sending event: {e}")
+
+        return {"message": f"Successfully connected to MongoDB and processed {len(documents)} documents from {db_connection.collection_name}."}
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to connect or process data: {e}")

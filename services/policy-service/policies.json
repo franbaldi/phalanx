@@ -1,0 +1,46 @@
+[
+  {
+    "id": "high-value-transaction",
+    "name": "High-Value Transaction Policy",
+    "description": "Flags any transaction over 5000 EUR.",
+    "data_type": "transaction",
+    "rules": [
+      {
+        "field": "amount",
+        "operator": ">",
+        "value": 5000
+      },
+      {
+        "field": "currency",
+        "operator": "==",
+        "value": "EUR"
+      }
+    ]
+  },
+  {
+    "id": "suspicious-country-transaction",
+    "name": "Suspicious Country Transaction Policy",
+    "description": "Flags transactions to/from Cayman Islands.",
+    "data_type": "transaction",
+    "rules": [
+      {
+        "field": "country",
+        "operator": "==",
+        "value": "Cayman Islands"
+      }
+    ]
+  },
+  {
+    "id": "low-credit-score-loan",
+    "name": "Low Credit Score Loan Application Policy",
+    "description": "Flags loan applications with a credit score below 600.",
+    "data_type": "loan_application",
+    "rules": [
+      {
+        "field": "credit_score",
+        "operator": "<",
+        "value": 600
+      }
+    ]
+  }
+]
