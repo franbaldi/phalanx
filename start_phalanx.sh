@@ -112,6 +112,10 @@ echo "--- All services are starting up ---"
 
 # --- Run DORA Incident Simulator ---
 wait_for_service "http://localhost:8000/docs"
+wait_for_service "http://localhost:8001/docs"
+wait_for_service "http://localhost:8002/docs"
+wait_for_service "http://localhost:8004/docs"
+wait_for_service "http://localhost:8005/docs"
 
 echo "--- Running DORA Incident Simulator ---"
 cd services/anomaly-detection-service
