@@ -60,6 +60,46 @@ except socket.error:
   echo "MongoDB is ready!"
 }
 
+populate_mongodb() {
+  echo "Populating MongoDB with dummy data..."
+  python3 -c '''
+from pymongo import MongoClient
+import datetime
+import random
+
+client = MongoClient("mongodb://localhost:27017/")
+db = client["phalanx_db"]
+
+# Transactions Collection
+transactions = db["transactions"]
+transactions.drop()
+for i in range(100):
+    transactions.insert_one({
+        "user_id": f"user_{random.randint(1, 10)}",
+        "amount": round(random.uniform(10, 1000), 2),
+        "currency": random.choice(["USD", "EUR", "GBP"]),
+        "recipient": f"merchant_{random.randint(1, 20)}",
+        "country": random.choice(["USA", "GBR", "DEU", "FRA"]),
+        "timestamp": datetime.datetime.now() - datetime.timedelta(days=random.randint(1, 30))
+    })
+print(f"Inserted {transactions.count_documents({})} transactions.")
+
+# Loan Applications Collection
+loan_applications = db["loan_applications"]
+loan_applications.drop()
+for i in range(50):
+    loan_applications.insert_one({
+        "user_id": f"user_{random.randint(1, 10)}",
+        "loan_amount": round(random.uniform(5000, 100000), 2),
+        "credit_score": random.randint(300, 850),
+        "timestamp": datetime.datetime.now() - datetime.timedelta(days=random.randint(1, 30))
+    })
+print(f"Inserted {loan_applications.count_documents({})} loan applications.")
+
+client.close()
+'''
+}
+
 # --- Frontend ---
 echo "--- Setting up Dashboard Frontend ---"
 kill_process_on_port 3000
@@ -140,6 +180,9 @@ echo "--- All services are starting up ---"
 
 # Wait for MongoDB to be ready
 wait_for_mongo "localhost" 27017
+
+# Populate MongoDB with dummy data
+populate_mongodb
 
 # Wait for all services to be ready
 wait_for_service "http://localhost:8000/docs"
