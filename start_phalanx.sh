@@ -118,6 +118,7 @@ install_python_dependencies
 echo "Starting anomaly detection service..."
 source .venv/bin/activate
 uvicorn main:app --reload --port 8000 &
+sleep 5
 cd ../..
 
 # --- Database Integration Service ---
@@ -128,6 +129,7 @@ install_python_dependencies
 echo "Starting database integration service..."
 source .venv/bin/activate
 uvicorn main:app --reload --port 8001 &
+sleep 5
 cd ../..
 
 # --- Compliance Automation Service ---
@@ -138,6 +140,7 @@ install_python_dependencies
 echo "Starting compliance automation service..."
 source .venv/bin/activate
 uvicorn main:app --reload --port 8002 &
+sleep 5
 cd ../..
 
 # --- Connector Service ---
@@ -148,6 +151,7 @@ install_python_dependencies
 echo "Starting connector service..."
 source .venv/bin/activate
 uvicorn main:app --reload --port 8004 &
+sleep 5
 cd ../..
 
 # --- Policy Service ---
