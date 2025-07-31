@@ -1,3 +1,23 @@
+# Python
 __pycache__/
 *.pyc
-.venv
+*.pyo
+*.pyd
+.Python
+env/
+.venv/
+venv/
+
+# Node
+node_modules/
+.npm
+
+# Docker
+.dockerignore
+
+# IDEs
+.idea/
+.vscode/
+
+# OS
+.DS_Store
