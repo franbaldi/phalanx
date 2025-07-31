@@ -1,0 +1,34 @@
+
+# DORA Major ICT Incident Report
+
+**Incident Classification:**
+- **Incident Reference ID:** INC-20250731-150727
+- **Date and Time of Incident:** 2025-07-31T15:07:27.869926
+- **Date and Time of Detection:** 2025-07-31 15:07:27
+- **Incident Type:** Transaction Anomaly
+
+**Summary of Incident:**
+- A transaction was flagged as a significant deviation from the user's established behavior patterns.
+- **Reason for Anomaly:** Transaction is a significant deviation from past behavior.
+
+**Details of the Anomalous Transaction:**
+- **User ID:** user_456
+- **Amount:** 7368.94 EUR
+- **Recipient:** Offshore_Account_123
+- **Location:** Cayman Islands
+
+**Initial Impact Assessment:**
+- **Affected Systems:** Core Banking, Transaction Processing
+- **Potential Impact:** Unauthorized funds transfer, potential financial loss, reputational damage.
+- **Affected Geographies:** Cayman Islands
+
+**Root Cause Analysis (Preliminary):**
+- The incident appears to be an isolated event, but further investigation is required.
+- Potential causes include compromised user credentials or sophisticated fraud attempt.
+
+**Next Steps:**
+1.  **Immediate Action:** The transaction has been automatically blocked pending review.
+2.  **Escalation:** The incident has been escalated to the Security Operations Center (SOC) for immediate investigation.
+3.  **Evidence Preservation:** All relevant transaction logs and user activity data have been preserved.
+4.  **Communication:** A notification has been sent to the affected user.
+

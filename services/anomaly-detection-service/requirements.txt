@@ -3,3 +3,7 @@ uvicorn
 numpy
 scikit-learn
 fastapi-cors
+chromadb
+sentence-transformers
+pandas
+requests
