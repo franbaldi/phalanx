@@ -39,3 +39,6 @@ INFO:root:{"transaction": {"user_id": "user_456", "amount": 5269.4, "currency": 
 INFO:root:{"transaction": {"user_id": "user_456", "amount": 9470.83, "currency": "EUR", "recipient": "Offshore_Account_123", "country": "Cayman Islands", "timestamp": "2025-07-31T15:19:07.899054"}, "reason": "Amount 9470.83 is >10x the user's average of 155.84."}
 INFO:root:{"transaction": {"user_id": "user_456", "amount": 5737.91, "currency": "EUR", "recipient": "Offshore_Account_123", "country": "Cayman Islands", "timestamp": "2025-07-31T15:19:16.158541"}, "reason": "Amount 5737.91 is >10x the user's average of 128.07."}
 INFO:root:{"transaction": {"user_id": "user_456", "amount": 9490.21, "currency": "EUR", "recipient": "Offshore_Account_123", "country": "Cayman Islands", "timestamp": "2025-07-31T15:19:24.394110"}, "reason": "Amount 9490.21 is >10x the user's average of 152.42."}
+INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: mps
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+INFO:chromadb.telemetry.product.posthog:Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
