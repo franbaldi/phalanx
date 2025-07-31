@@ -1,0 +1,4 @@
+INFO:root:Anomalous query detected: SELECT * FROM users WHERE id = 1
+INFO:root:Anomalous query detected: SELECT * FROM users WHERE id = 1
+INFO:root:Anomalous query detected: SELECT * FROM products WHERE category = 'electronics'
+INFO:root:Anomalous query detected: DELETE FROM customers WHERE id = 1; DROP TABLE users;

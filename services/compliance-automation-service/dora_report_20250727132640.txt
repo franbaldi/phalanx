@@ -1,0 +1,20 @@
+
+    DORA Incident Report
+    --------------------
+
+    Date of Incident: 2025-07-27 13:26:40
+    Date of Detection: 2025-07-27 13:26:40
+
+    Description of Incident:
+    Anomalous database query detected.
+
+    Anomalous Query:
+    DELETE FROM customers WHERE id = 1; DROP TABLE users;
+
+    Initial Assessment:
+    Potential unauthorized access or data exfiltration attempt.
+
+    Next Steps:
+    - Escalate to security team for investigation.
+    - Preserve relevant logs and evidence.
+    
