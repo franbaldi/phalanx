@@ -42,5 +42,36 @@
         "value": 600
       }
     ]
+  },
+  {
+    "id": "data-retention-policy",
+    "name": "Data Retention Policy",
+    "description": "Flags data older than 7 years for GDPR compliance.",
+    "data_type": "data_record",
+    "rules": [
+      {
+        "field": "age_in_years",
+        "operator": ">",
+        "value": 7
+      }
+    ]
+  },
+  {
+    "id": "unauthorized-config-change",
+    "name": "Unauthorized Configuration Change Policy",
+    "description": "Flags any unauthorized changes to critical system configurations.",
+    "data_type": "system_config",
+    "rules": [
+      {
+        "field": "authorized_approver",
+        "operator": "==",
+        "value": "false"
+      },
+      {
+        "field": "change_type",
+        "operator": "==",
+        "value": "critical"
+      }
+    ]
   }
 ]

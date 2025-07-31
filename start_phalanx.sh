@@ -38,6 +38,28 @@ wait_for_service() {
   echo "Service is ready!"
 }
 
+wait_for_mongo() {
+  HOST=$1
+  PORT=$2
+  echo "Waiting for MongoDB at $HOST:$PORT to be ready..."
+  until python3 -c "
+import socket
+import sys
+try:
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.connect(('$HOST', $PORT))
+    s.close()
+    sys.exit(0)
+except socket.error:
+    sys.exit(1)
+" > /dev/null 2>&1
+  do
+    echo "MongoDB not yet available, waiting..."
+    sleep 5
+  done
+  echo "MongoDB is ready!"
+}
+
 # --- Frontend ---
 echo "--- Setting up Dashboard Frontend ---"
 kill_process_on_port 3000
@@ -117,7 +139,7 @@ docker run -d --name phalanx-mongodb -p 27017:27017 mongo:latest
 echo "--- All services are starting up ---"
 
 # Wait for MongoDB to be ready
-wait_for_service "http://localhost:27017"
+wait_for_mongo "localhost" 27017
 
 # Wait for all services to be ready
 wait_for_service "http://localhost:8000/docs"

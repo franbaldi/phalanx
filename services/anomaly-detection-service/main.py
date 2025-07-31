@@ -139,6 +139,9 @@ async def check_event(event: GenericEvent):
                     elif operator == "<" and event_value < value:
                         is_anomaly = True
                         reason = f"Policy Violated: {policy['name']} - {field} ({event_value}) < {value}."
+                    elif operator == "==" and event_value == value:
+                        is_anomaly = True
+                        reason = f"Policy Violated: {policy['name']} - {field} ({event_value}) == {value}."
 
     if is_anomaly:
         anomaly_data = {"event": event.dict(), "reason": reason}

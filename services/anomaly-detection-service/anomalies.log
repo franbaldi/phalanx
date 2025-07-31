@@ -34,3 +34,11 @@ INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: mps
 INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: all-MiniLM-L6-v2
 INFO:chromadb.telemetry.product.posthog:Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
 ERROR:root:Failed to load policies: HTTPConnectionPool(host='localhost', port=8005): Max retries exceeded with url: /policies (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x167b93230>: Failed to establish a new connection: [Errno 61] Connection refused'))
+INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: mps
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+INFO:chromadb.telemetry.product.posthog:Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+ERROR:root:Failed to load policies: HTTPConnectionPool(host='localhost', port=8005): Max retries exceeded with url: /policies (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1518d7230>: Failed to establish a new connection: [Errno 61] Connection refused'))
+INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: mps
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+INFO:chromadb.telemetry.product.posthog:Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+ERROR:root:Failed to load policies: HTTPConnectionPool(host='localhost', port=8005): Max retries exceeded with url: /policies (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x165977230>: Failed to establish a new connection: [Errno 61] Connection refused'))
