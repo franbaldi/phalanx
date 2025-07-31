@@ -195,6 +195,8 @@ wait_for_service "http://localhost:8002/docs"
 wait_for_service "http://localhost:8004/docs"
 wait_for_service "http://localhost:8005/docs"
 
+sleep 10 # Give services extra time to fully initialize
+
 echo "--- Running DORA Incident Simulator ---"
 cd services/anomaly-detection-service
 source .venv/bin/activate
