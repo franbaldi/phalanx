@@ -1,0 +1,39 @@
+
+    DORA Monthly Compliance Report - 2025-07
+    -------------------------------------------
+
+    Summary of Anomalies:
+
+    Anomaly 1:
+  Event Type: data_record
+  User ID: user_data_2
+  Timestamp: 2014-08-03T17:48:21.022821
+  Reason: Policy Violated: Data Retention Policy - age_in_years (11) > 7.
+  Event Data: {
+  "record_id": "rec_7264",
+  "data_type": "customer_info",
+  "age_in_years": 11
+}
+
+Anomaly 2:
+  Event Type: system_config
+  User ID: admin_2
+  Timestamp: 2025-07-31T17:48:28.355101
+  Reason: Policy Violated: Unauthorized Configuration Change Policy - change_type (critical) == critical.
+  Event Data: {
+  "config_item": "cfg_189",
+  "change_description": "System parameter update",
+  "authorized_approver": false,
+  "change_type": "critical"
+}
+
+
+    Main Problems Identified:
+    - High volume of suspicious transactions to offshore accounts.
+    - Loan applications with unusually low credit scores.
+
+    Suggestions for Remediation:
+    - Implement stricter controls for international transactions, especially to high-risk countries.
+    - Enhance fraud detection models for loan applications to include more comprehensive credit risk assessment.
+    - Conduct regular security audits and employee training on data handling and anomaly detection.
+    

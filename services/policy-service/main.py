@@ -53,11 +53,9 @@ def get_policies():
     return list(policies.values())
 
 @app.post("/policies", response_model=Policy)
-def create_policy(policy: Policy):
-    """Creates a new policy."""
+def create_or_update_policy(policy: Policy):
+    """Creates a new policy or updates an existing one."""
     policies = load_policies()
-    if policy.id in policies:
-        raise HTTPException(status_code=400, detail="Policy with this ID already exists.")
     policies[policy.id] = policy
     save_policies(policies)
     return policy

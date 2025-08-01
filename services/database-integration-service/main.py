@@ -1,9 +1,12 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from pymongo import MongoClient
+from pymongo.errors import ConnectionFailure
 from typing import Optional, Dict, Any
 import httpx
 import asyncio
+from bson import json_util
+import json
 
 app = FastAPI()
 
@@ -32,17 +35,15 @@ async def connect_to_db(db_connection: DBConnection):
         else:
             mongo_uri = f"mongodb://{db_connection.host}:{db_connection.port}/"
 
-        client = MongoClient(mongo_uri)
+        client = MongoClient(mongo_uri, serverSelectionTimeoutMS=5000)
+        # Check if the server is available
+        client.admin.command('ping')
+
         db = client[db_connection.dbname]
         collection = db[db_connection.collection_name]
 
-        # Fetch data from the collection
-        documents = []
-        for doc in collection.find():
-            # MongoDB _id is not JSON serializable, so convert it to string
-            if '_id' in doc:
-                doc['_id'] = str(doc['_id'])
-            documents.append(doc)
+        # Fetch data from the collection and serialize using bson.json_util
+        documents = json.loads(json_util.dumps(collection.find()))
 
         if not documents:
             return {"message": f"No documents found in collection {db_connection.collection_name}."}
@@ -51,9 +52,9 @@ async def connect_to_db(db_connection: DBConnection):
         async with httpx.AsyncClient() as http_client:
             for doc in documents:
                 event_data = {
-                    "user_id": doc.get("user_id", "unknown"), # Assuming user_id is present
-                    "timestamp": doc.get("timestamp", ""), # Assuming timestamp is present
-                    "event_type": db_connection.collection_name, # Use collection name as event type
+                    "user_id": doc.get("user_id", "unknown"),
+                    "timestamp": doc.get("timestamp", ""),
+                    "event_type": db_connection.collection_name,
                     "data": doc
                 }
                 try:
@@ -67,5 +68,7 @@ async def connect_to_db(db_connection: DBConnection):
 
         return {"message": f"Successfully connected to MongoDB and processed {len(documents)} documents from {db_connection.collection_name}."}
 
+    except ConnectionFailure as e:
+        raise HTTPException(status_code=500, detail=f"Failed to connect to MongoDB: {e}")
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to connect or process data: {e}")
