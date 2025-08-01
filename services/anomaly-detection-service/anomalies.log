@@ -42,3 +42,87 @@ INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: mps
 INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: all-MiniLM-L6-v2
 INFO:chromadb.telemetry.product.posthog:Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
 ERROR:root:Failed to load policies: HTTPConnectionPool(host='localhost', port=8005): Max retries exceeded with url: /policies (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x165977230>: Failed to establish a new connection: [Errno 61] Connection refused'))
+INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: mps
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+INFO:chromadb.telemetry.product.posthog:Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+ERROR:root:Failed to load policies: HTTPConnectionPool(host='localhost', port=8005): Max retries exceeded with url: /policies (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x139fd7230>: Failed to establish a new connection: [Errno 61] Connection refused'))
+INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: mps
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+INFO:chromadb.telemetry.product.posthog:Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+ERROR:root:Failed to load policies: HTTPConnectionPool(host='localhost', port=8005): Max retries exceeded with url: /policies (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x3085d3230>: Failed to establish a new connection: [Errno 61] Connection refused'))
+INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: mps
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+INFO:chromadb.telemetry.product.posthog:Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+ERROR:root:Failed to load policies: HTTPConnectionPool(host='localhost', port=8005): Max retries exceeded with url: /policies (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x168bdb230>: Failed to establish a new connection: [Errno 61] Connection refused'))
+INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: mps
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+INFO:chromadb.telemetry.product.posthog:Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+ERROR:root:Failed to load policies: HTTPConnectionPool(host='localhost', port=8005): Max retries exceeded with url: /policies (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x16d11f230>: Failed to establish a new connection: [Errno 61] Connection refused'))
+INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: mps
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+INFO:chromadb.telemetry.product.posthog:Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+INFO:root:Successfully loaded 5 policies.
+WARNING:root:Vector search failed for user user_data_1: Expected where to have exactly one operator, got {'user_id': 'user_data_1', 'event_type': 'data_record'} in query.
+WARNING:root:Vector search failed for user user_data_1: Expected where to have exactly one operator, got {'user_id': 'user_data_1', 'event_type': 'data_record'} in query.
+WARNING:root:Vector search failed for user user_data_1: Expected where to have exactly one operator, got {'user_id': 'user_data_1', 'event_type': 'data_record'} in query.
+WARNING:root:Vector search failed for user user_data_2: Expected where to have exactly one operator, got {'user_id': 'user_data_2', 'event_type': 'data_record'} in query.
+INFO:root:{"event": {"user_id": "user_data_2", "timestamp": "2014-08-03T17:29:41.495820", "event_type": "data_record", "data": {"record_id": "rec_2287", "data_type": "customer_info", "age_in_years": 11}}, "reason": "Policy Violated: Data Retention Policy - age_in_years (11) > 7."}
+WARNING:root:Vector search failed for user user_data_1: Expected where to have exactly one operator, got {'user_id': 'user_data_1', 'event_type': 'data_record'} in query.
+WARNING:root:Vector search failed for user user_data_1: Expected where to have exactly one operator, got {'user_id': 'user_data_1', 'event_type': 'data_record'} in query.
+WARNING:root:Vector search failed for user admin_1: Expected where to have exactly one operator, got {'user_id': 'admin_1', 'event_type': 'system_config'} in query.
+WARNING:root:Vector search failed for user admin_1: Expected where to have exactly one operator, got {'user_id': 'admin_1', 'event_type': 'system_config'} in query.
+WARNING:root:Vector search failed for user admin_1: Expected where to have exactly one operator, got {'user_id': 'admin_1', 'event_type': 'system_config'} in query.
+WARNING:root:Vector search failed for user admin_1: Expected where to have exactly one operator, got {'user_id': 'admin_1', 'event_type': 'system_config'} in query.
+WARNING:root:Vector search failed for user admin_2: Expected where to have exactly one operator, got {'user_id': 'admin_2', 'event_type': 'system_config'} in query.
+INFO:root:{"event": {"user_id": "admin_2", "timestamp": "2025-07-31T17:29:48.816406", "event_type": "system_config", "data": {"config_item": "cfg_568", "change_description": "System parameter update", "authorized_approver": false, "change_type": "critical"}}, "reason": "Policy Violated: Unauthorized Configuration Change Policy - change_type (critical) == critical."}
+WARNING:root:Vector search failed for user admin_1: Expected where to have exactly one operator, got {'user_id': 'admin_1', 'event_type': 'system_config'} in query.
+INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: mps
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+INFO:chromadb.telemetry.product.posthog:Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+INFO:root:Successfully loaded 5 policies.
+WARNING:root:Vector search failed for user user_data_1: Expected where to have exactly one operator, got {'user_id': 'user_data_1', 'event_type': 'data_record'} in query.
+WARNING:root:Vector search failed for user user_data_1: Expected where to have exactly one operator, got {'user_id': 'user_data_1', 'event_type': 'data_record'} in query.
+WARNING:root:Vector search failed for user user_data_1: Expected where to have exactly one operator, got {'user_id': 'user_data_1', 'event_type': 'data_record'} in query.
+WARNING:root:Vector search failed for user user_data_2: Expected where to have exactly one operator, got {'user_id': 'user_data_2', 'event_type': 'data_record'} in query.
+INFO:root:{"event": {"user_id": "user_data_2", "timestamp": "2014-08-03T17:48:21.022821", "event_type": "data_record", "data": {"record_id": "rec_7264", "data_type": "customer_info", "age_in_years": 11}}, "reason": "Policy Violated: Data Retention Policy - age_in_years (11) > 7."}
+WARNING:root:Vector search failed for user user_data_1: Expected where to have exactly one operator, got {'user_id': 'user_data_1', 'event_type': 'data_record'} in query.
+WARNING:root:Vector search failed for user user_data_1: Expected where to have exactly one operator, got {'user_id': 'user_data_1', 'event_type': 'data_record'} in query.
+WARNING:root:Vector search failed for user admin_1: Expected where to have exactly one operator, got {'user_id': 'admin_1', 'event_type': 'system_config'} in query.
+WARNING:root:Vector search failed for user admin_1: Expected where to have exactly one operator, got {'user_id': 'admin_1', 'event_type': 'system_config'} in query.
+WARNING:root:Vector search failed for user admin_1: Expected where to have exactly one operator, got {'user_id': 'admin_1', 'event_type': 'system_config'} in query.
+WARNING:root:Vector search failed for user admin_1: Expected where to have exactly one operator, got {'user_id': 'admin_1', 'event_type': 'system_config'} in query.
+WARNING:root:Vector search failed for user admin_2: Expected where to have exactly one operator, got {'user_id': 'admin_2', 'event_type': 'system_config'} in query.
+INFO:root:{"event": {"user_id": "admin_2", "timestamp": "2025-07-31T17:48:28.355101", "event_type": "system_config", "data": {"config_item": "cfg_189", "change_description": "System parameter update", "authorized_approver": false, "change_type": "critical"}}, "reason": "Policy Violated: Unauthorized Configuration Change Policy - change_type (critical) == critical."}
+WARNING:root:Vector search failed for user admin_1: Expected where to have exactly one operator, got {'user_id': 'admin_1', 'event_type': 'system_config'} in query.
+WARNING:root:Vector search failed for user user_data_1: Expected where to have exactly one operator, got {'user_id': 'user_data_1', 'event_type': 'data_record'} in query.
+WARNING:root:Vector search failed for user user_data_1: Expected where to have exactly one operator, got {'user_id': 'user_data_1', 'event_type': 'data_record'} in query.
+WARNING:root:Vector search failed for user user_data_1: Expected where to have exactly one operator, got {'user_id': 'user_data_1', 'event_type': 'data_record'} in query.
+WARNING:root:Vector search failed for user user_data_2: Expected where to have exactly one operator, got {'user_id': 'user_data_2', 'event_type': 'data_record'} in query.
+INFO:root:{"event": {"user_id": "user_data_2", "timestamp": "2015-08-04T22:26:18.619096", "event_type": "data_record", "data": {"record_id": "rec_4915", "data_type": "customer_info", "age_in_years": 10}}, "reason": "Policy Violated: Data Retention Policy - age_in_years (10) > 7."}
+WARNING:root:Vector search failed for user user_data_1: Expected where to have exactly one operator, got {'user_id': 'user_data_1', 'event_type': 'data_record'} in query.
+WARNING:root:Vector search failed for user user_data_1: Expected where to have exactly one operator, got {'user_id': 'user_data_1', 'event_type': 'data_record'} in query.
+WARNING:root:Vector search failed for user admin_1: Expected where to have exactly one operator, got {'user_id': 'admin_1', 'event_type': 'system_config'} in query.
+WARNING:root:Vector search failed for user admin_1: Expected where to have exactly one operator, got {'user_id': 'admin_1', 'event_type': 'system_config'} in query.
+WARNING:root:Vector search failed for user admin_1: Expected where to have exactly one operator, got {'user_id': 'admin_1', 'event_type': 'system_config'} in query.
+WARNING:root:Vector search failed for user admin_1: Expected where to have exactly one operator, got {'user_id': 'admin_1', 'event_type': 'system_config'} in query.
+WARNING:root:Vector search failed for user admin_2: Expected where to have exactly one operator, got {'user_id': 'admin_2', 'event_type': 'system_config'} in query.
+INFO:root:{"event": {"user_id": "admin_2", "timestamp": "2025-08-01T22:26:25.795868", "event_type": "system_config", "data": {"config_item": "cfg_857", "change_description": "System parameter update", "authorized_approver": false, "change_type": "critical"}}, "reason": "Policy Violated: Unauthorized Configuration Change Policy - change_type (critical) == critical."}
+WARNING:root:Vector search failed for user admin_1: Expected where to have exactly one operator, got {'user_id': 'admin_1', 'event_type': 'system_config'} in query.
+INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: mps
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+INFO:chromadb.telemetry.product.posthog:Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+INFO:root:Successfully loaded 2 policies.
+WARNING:root:Vector search failed for user user_data_1: Expected where to have exactly one operator, got {'user_id': 'user_data_1', 'event_type': 'data_record'} in query.
+WARNING:root:Vector search failed for user user_data_1: Expected where to have exactly one operator, got {'user_id': 'user_data_1', 'event_type': 'data_record'} in query.
+WARNING:root:Vector search failed for user user_data_1: Expected where to have exactly one operator, got {'user_id': 'user_data_1', 'event_type': 'data_record'} in query.
+WARNING:root:Vector search failed for user user_data_2: Expected where to have exactly one operator, got {'user_id': 'user_data_2', 'event_type': 'data_record'} in query.
+INFO:root:{"event": {"user_id": "user_data_2", "timestamp": "2016-08-03T22:29:10.409621", "event_type": "data_record", "data": {"record_id": "rec_5502", "data_type": "customer_info", "age_in_years": 9}}, "reason": "Policy Violated: Data Retention Policy - age_in_years (9) > 7."}
+WARNING:root:Vector search failed for user user_data_1: Expected where to have exactly one operator, got {'user_id': 'user_data_1', 'event_type': 'data_record'} in query.
+WARNING:root:Vector search failed for user user_data_1: Expected where to have exactly one operator, got {'user_id': 'user_data_1', 'event_type': 'data_record'} in query.
+WARNING:root:Vector search failed for user admin_1: Expected where to have exactly one operator, got {'user_id': 'admin_1', 'event_type': 'system_config'} in query.
+WARNING:root:Vector search failed for user admin_1: Expected where to have exactly one operator, got {'user_id': 'admin_1', 'event_type': 'system_config'} in query.
+WARNING:root:Vector search failed for user admin_1: Expected where to have exactly one operator, got {'user_id': 'admin_1', 'event_type': 'system_config'} in query.
+WARNING:root:Vector search failed for user admin_1: Expected where to have exactly one operator, got {'user_id': 'admin_1', 'event_type': 'system_config'} in query.
+WARNING:root:Vector search failed for user admin_2: Expected where to have exactly one operator, got {'user_id': 'admin_2', 'event_type': 'system_config'} in query.
+INFO:root:{"event": {"user_id": "admin_2", "timestamp": "2025-08-01T22:29:17.641820", "event_type": "system_config", "data": {"config_item": "cfg_436", "change_description": "System parameter update", "authorized_approver": false, "change_type": "critical"}}, "reason": "Policy Violated: Unauthorized Configuration Change Policy - change_type (critical) == critical."}
+WARNING:root:Vector search failed for user admin_1: Expected where to have exactly one operator, got {'user_id': 'admin_1', 'event_type': 'system_config'} in query.

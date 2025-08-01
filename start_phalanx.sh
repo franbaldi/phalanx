@@ -7,7 +7,7 @@ set -e
 kill_process_on_port() {
   PORT=$1
   echo "Checking for process on port $PORT..."
-  PID=$(lsof -t -i:$PORT)
+  PID=$(lsof -t -i:$PORT || true)
   if [ -n "$PID" ]; then
     echo "Killing process $PID on port $PORT..."
     kill -9 $PID
@@ -143,17 +143,6 @@ uvicorn main:app --reload --port 8002 &
 sleep 5
 cd ../..
 
-# --- Connector Service ---
-echo "--- Setting up Connector Service ---"
-kill_process_on_port 8004
-cd services/connector-service
-install_python_dependencies
-echo "Starting connector service..."
-source .venv/bin/activate
-uvicorn main:app --reload --port 8004 &
-sleep 5
-cd ../..
-
 # --- Policy Service ---
 echo "--- Setting up Policy Service ---"
 kill_process_on_port 8005
@@ -164,15 +153,7 @@ source .venv/bin/activate
 uvicorn main:app --reload --port 8005 &
 cd ../..
 
-# --- Database Provisioning Service ---
-echo "--- Setting up Database Provisioning Service ---
-kill_process_on_port 8003
-cd services/database-provisioning-service
-echo "Building and running database provisioning service container..."
-docker build -t database-provisioning-service .
-docker rm -f database-provisioning-service || true
-docker run -d --name database-provisioning-service -p 8003:8003 -v /var/run/docker.sock:/var/run/docker.sock database-provisioning-service
-cd ../..
+
 
 # --- MongoDB Service ---
 echo "--- Setting up MongoDB Service ---"
@@ -192,7 +173,6 @@ populate_mongodb
 wait_for_service "http://localhost:8000/docs"
 wait_for_service "http://localhost:8001/docs"
 wait_for_service "http://localhost:8002/docs"
-wait_for_service "http://localhost:8004/docs"
 wait_for_service "http://localhost:8005/docs"
 
 sleep 10 # Give services extra time to fully initialize
